@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resume — Alex Rivera</title>
+<meta name="description" content="Resume of Alex Rivera, physics student at UC Irvine." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">A. Rivera <span>·</span> Physics</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-top:56px;">
+    <div class="container">
+      <div class="resume-toolbar">
+        <div>
+          <p class="eyebrow">Curriculum vitae</p>
+          <h2 class="section-title" style="margin-bottom:0;">Resume</h2>
+        </div>
+        <a class="btn btn-primary" href="assets/resume/resume.pdf" download>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 19h16"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="resume-frame-wrap">
+        <iframe
+          class="resume-frame"
+          src="assets/resume/resume.pdf"
+          title="Alex Rivera's resume PDF preview">
+          <p class="resume-fallback">
+            Your browser can't preview PDFs inline.
+            <a href="assets/resume/resume.pdf" download>Download the PDF</a> instead.
+          </p>
+        </iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    &copy; <span class="current-year"></span> Alex Rivera · Built with HTML, CSS &amp; JavaScript
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
