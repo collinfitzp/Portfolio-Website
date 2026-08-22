@@ -37,16 +37,59 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---- Contact form (front-end only demo) ---- */
+  /* ---- Contact form (submits to Formspree via fetch/AJAX) ---- */
   const form = document.getElementById("contact-form");
   if (form) {
-    form.addEventListener("submit", (e) => {
+    const successEl = document.getElementById("form-success");
+    const errorEl = document.getElementById("form-error");
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const successEl = document.getElementById("form-success");
-      if (successEl) {
-        successEl.classList.add("visible");
+
+      // Reset status messages on each attempt
+      if (successEl) successEl.classList.remove("visible");
+      if (errorEl) errorEl.classList.remove("visible");
+
+      const originalBtnText = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
       }
-      form.reset();
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          form.reset();
+          if (successEl) successEl.classList.add("visible");
+        } else {
+          const data = await response.json().catch(() => null);
+          const message =
+            data && data.errors && data.errors.length
+              ? data.errors.map((err) => err.message).join(", ")
+              : "Something went wrong sending your message. Please try again or email me directly.";
+          if (errorEl) {
+            errorEl.textContent = message;
+            errorEl.classList.add("visible");
+          }
+        }
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent =
+            "Something went wrong sending your message. Please try again or email me directly.";
+          errorEl.classList.add("visible");
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
     });
   }
 });

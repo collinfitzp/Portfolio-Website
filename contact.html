@@ -61,9 +61,10 @@
 
         <div>
           <div id="form-success" class="form-success">
-            Thanks — this demo form doesn't send yet, but your message printed to the console.
+            Thanks for reaching out — your message has been sent. I'll get back to you soon.
           </div>
-          <form id="contact-form" novalidate>
+          <div id="form-error" class="form-error"></div>
+          <form id="contact-form" action="https://formspree.io/f/xaewkovv" method="POST" novalidate>
             <div class="form-field">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required />
@@ -77,10 +78,6 @@
               <textarea id="message" name="message" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send message</button>
-            <p class="form-note">
-              This form is front-end only. Wire it to a service like Formspree,
-              Netlify Forms, or your own backend to actually receive messages.
-            </p>
           </form>
         </div>
       </div>
